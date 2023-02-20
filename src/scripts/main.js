@@ -1,14 +1,5 @@
-import { getTopTracks } from "./getters.js";
+import { getTopTracks, getRecommendations, getTopArtists,getTopTracksAudioFeatures } from "./getters.js";
 
-let topTracksIDs = [];
-
-const options = {
-  method: 'GET', headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + 'BQBEhArv26ZjHStnW8mzUM4YRjmIyWbj3iIGMItUKKJEEcPdoWGe8c42B_nWd0vhZNcYyM9R8gLB4ZOpB5trXdknKNvT0a7JC1tiZo0y_CouwLDzeKmEohZjuTqdwpqrtOJqmTBHajTBvzEnPjGl2KLAhC55DcZfa5O5tgau4AAa93LqMDCmUaganrcbtWTL0kaDeQP6l5a_dR8r6rGSWlPCuxi9dyA'
-  }
-}
 
 async function getData(){
   const topTracks = await getTopTracks();
@@ -17,7 +8,16 @@ async function getData(){
 }
 
 function show(data){
-  document.querySelector('p').innerText = data
+  document.getElementById('Track1').innerText = data[0].name
+  document.getElementById('Track2').innerText = data[1].name
+  document.getElementById('Track3').innerText = data[2].name
+  document.getElementById('Track4').innerText = data[3].name
+  document.getElementById('Track5').innerText = data[4].name
+  document.getElementById('Track6').innerText = data[5].name
+  document.getElementById('Track7').innerText = data[6].name
+  document.getElementById('Track8').innerText = data[7].name
+  document.getElementById('Track9').innerText = data[8].name
+  document.getElementById('Track10').innerText = data[9].name
 }
 
 getData();

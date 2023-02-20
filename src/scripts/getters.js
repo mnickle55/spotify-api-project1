@@ -3,14 +3,15 @@
 //get recommendations based on some of the audio feature stats / need to build query out to specify properties
 //https://api.spotify.com/v1/recommendations
 
-
 let topTracksIDs = [];
+
+let authToken = 'BQDYEjuUPlJ_jJXXvKP1mKqb8GV-CagN3g4C_6KMwkc1-WSCvqLes38dXgfyWGF5FCgkcDQ1biipZEghyscKvOZOgS5iepGhQatcbRycwIpIenrtVHLAhT0ncBZp9s2Ga3T3kQrOzgqL-LDEShuVybwiohhPvR9ogD1O7kv-SUo2RcN2bhfNmLcyszVxvRgH4ePQKuUUwx8czZp1Rx9f4KO6aiDqnu4'
 
 const options = {
   method: 'GET', headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + 'BQBEhArv26ZjHStnW8mzUM4YRjmIyWbj3iIGMItUKKJEEcPdoWGe8c42B_nWd0vhZNcYyM9R8gLB4ZOpB5trXdknKNvT0a7JC1tiZo0y_CouwLDzeKmEohZjuTqdwpqrtOJqmTBHajTBvzEnPjGl2KLAhC55DcZfa5O5tgau4AAa93LqMDCmUaganrcbtWTL0kaDeQP6l5a_dR8r6rGSWlPCuxi9dyA'
+      'Authorization': 'Bearer ' + authToken
   }
 }
 
