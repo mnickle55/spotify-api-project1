@@ -16,11 +16,9 @@ var client_id = 'CLIENT_ID'; // Your client id
 var client_secret = 'CLIENT_SECRET'; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
-/**
- * Generates a random string containing numbers and letters
- * @param  {number} length The length of the string
- * @return {string} The generated string
- */
+
+// generates a random string containing numbers and letters
+
 var generateRandomString = function(length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -35,9 +33,11 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static('/home/mnickle/Projects/spotify-api-project1/src/'))
    .use(cors())
    .use(cookieParser());
+
+
 
 app.get('/login', function(req, res) {
 
@@ -87,9 +87,9 @@ app.get('/callback', function(req, res) {
     request.post(authOptions, function(error, response, body) {
       if (!error && response.statusCode === 200) {
 
-        var access_token = body.access_token,
-            refresh_token = body.refresh_token;
-
+            let access_token = body.access_token;
+            let refresh_token = body.refresh_token;
+            
         var options = {
           url: 'https://api.spotify.com/v1/me',
           headers: { 'Authorization': 'Bearer ' + access_token },
@@ -102,12 +102,8 @@ app.get('/callback', function(req, res) {
           console.log('Your access token:',access_token)
         });
 
-        // we can also pass the token to the browser to make requests from there
-        res.redirect('/#' +
-          querystring.stringify({
-            access_token: access_token,
-            refresh_token: refresh_token
-          }));
+        //redirect to homepage after successfully fetching acces token
+        res.redirect('/homepage.html');
       } else {
         res.redirect('/#' +
           querystring.stringify({
@@ -141,6 +137,8 @@ app.get('/refresh_token', function(req, res) {
     }
   });
 });
+
+
 
 console.log('Listening on 8888');
 app.listen(8888);

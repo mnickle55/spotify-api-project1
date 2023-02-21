@@ -1,6 +1,5 @@
 clean up code / make more efficient and concise
 update README
-show user information at top
 
 BONUS:
 utilzie classes with private properties
