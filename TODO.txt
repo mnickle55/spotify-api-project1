@@ -1,2 +1,17 @@
 render avg stats again once no more tracks selected
 only allow one image to be clicked at one time_range
+clean up code / make more efficient and concise
+clean up chart.js css 
+use options
+basic wireframe
+update README
+show user information at top
+
+BONUS:
+utilzie classes with private properties
+leading spinner for api calls
+add song recommendations feature
+
+STRETCH:
+unit tests with jest
+handle fetch request errors gracefully
