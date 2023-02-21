@@ -40,7 +40,7 @@
     transform: scale(1.1);
     border-color: rgb(236, 152, 236);
     border-width: 2px;
-    border-radius: 50%;
+    border-radius: 25%;
   }
 
   .normal-img img {
@@ -63,6 +63,14 @@
 
   #user-img {
     height: 100px;
+  }
+
+  .rounded img-fluid{
+    height:100px
+  }  
+
+  section {
+    border: solid red
   }
 
   

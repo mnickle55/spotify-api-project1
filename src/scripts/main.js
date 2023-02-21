@@ -3,7 +3,8 @@ import { getTopTracks,
         getTopArtists,
         getTopTracksAudioFeatures,
         getTrackAudioFeatures,
-        getUser} from "./getters.js";
+        getUser,
+        getTrackPreview} from "./getters.js";
 
 
 async function getTopTracksData(){
@@ -69,7 +70,7 @@ async function getTopTracksAudioFeaturesData(){
   let avgEnergy = getAvgFeature('energy');
   let avgInstrumentalness = getAvgFeature('instrumentalness');
   let avgSpeechiness = getAvgFeature('speechiness');
-  let avgTempo = getAvgFeature('tempo');
+  let avgTempo = Math.round(getAvgFeature('tempo'));
   let avgValence = getAvgFeature('valence');
   let avgLoudness = getAvgFeature('loudness');
   let avgLiveness = getAvgFeature('liveness');
@@ -86,6 +87,15 @@ async function getTopTracksAudioFeaturesData(){
 
   document.getElementById('audio-stats-title').innerText = 'Average Stats'
 
+}
+
+let audioObjs = []
+
+function playSound(url) {
+  audioObjs.forEach(element => element.pause())
+  var a = new Audio(url);
+  audioObjs.push(a)
+  a.play();
 }
 
 async function getGenres(){
@@ -178,15 +188,19 @@ let imgArray = document.querySelectorAll('img')
 async function handleTrackClick (event) {
   imgArray.forEach(item => {
     if(item.id !== event.target.id && item.id !== 'user-img'){
-      item.parentElement.className = 'hover-zoomin'
+      item.parentElement.className = 'hover-zoomin';
     }
   })
   if(document.getElementById(event.target.id).parentElement.className === 'sticky-hover'){
+    audioObjs.forEach(element => element.pause())
     document.getElementById(event.target.id).parentElement.className = 'normal-img'
     getTopTracksAudioFeaturesData()
   } else if(event.target.id !== 'user-img' ) {
   document.getElementById(event.target.id).parentElement.className = 'sticky-hover'
+  playSound(
+    await getTrackPreview(sessionStorage.getItem(event.target.id)))
   }  
+
 
   //if no tracks are selected anymore, render avg stats again
 
@@ -211,7 +225,7 @@ async function handleTrackClick (event) {
   let itemEnergy = Math.round(audioFeats.energy*100)/100;
   let itemInstrumentalness = Math.round(audioFeats.instrumentalness*100)/100;
   let itemSpeechiness = Math.round(audioFeats.speechiness*100)/100;
-  let itemTempo = Math.round(audioFeats.tempo*100)/100;
+  let itemTempo = Math.round(audioFeats.tempo);
   let itemValence = Math.round(audioFeats.valence*100)/100;
   let itemLoudness = Math.round(audioFeats.loudness*100)/100;
   let itemLiveness = Math.round(audioFeats.liveness*100)/100;

@@ -5,10 +5,11 @@
 
 let topTracksIDs = [];
 
-let authToken = 'BQCjvTM3xOegapE03vh-47TK2cU3CuC1Zrm4CltZj0shT2K3B4K7cDZKMWvPjuhMcwx95u6O_WX50xDPQdox1UYmQonsld_pdmVMVTF-FQ6TLrqAWlq_habdNe8XItaEkobyEF7R56Xq6lspXz8ZCfT3g2ajHNMF-PGo_bKd1o4rcZNYL5l-6cE3Va1bjqWFAEejk26kMkfNVcX4RNr_I6IEIAEDgGs'
+let authToken = 'BQDoTPDggc3kTQTw7p1RX924zR8vGRxdSPVHXxwvG7mjOB1AfoeXGlcfuOckLyBs175gGZbU-41C18hAJNAlTNlWV_sleJsb7qFQF2v1KBQ9FTFOIaSQks7eICTFl02iNDdeGcG8BIP1-VLMVAko93XcGCzVMNNq_dfl60RHhiCqUwL8Tz-P2zqM0I-Q5TiOzdu2YGL7Y4DuwU1Qbe5snTa0YjTYgyw'
 
 const options = {
-  method: 'GET', headers: {
+  method: 'GET', 
+  headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + authToken
@@ -18,6 +19,11 @@ const options = {
 export const getTopTracks = () => fetch('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=12&offset=0',options)
   .then(response => response.json())
   .then(data => data.items)
+  .catch(err => console.log(err))
+
+export const getTrackPreview = (id) => fetch(`https://api.spotify.com/v1/tracks/${id}`,options)
+  .then(response => response.json())
+  .then(data => data.preview_url)
   .catch(err => console.log(err))
 
 export const getTopTracksAudioFeatures = () => fetch('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=0',options)
@@ -60,9 +66,6 @@ fetch('https://api.spotify.com/v1/me',options)
       .then(response => response.json())
       .then(data => data)
       .catch(err => console.log(err))
-
-
-
 
 
 

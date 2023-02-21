@@ -1,5 +1,5 @@
 clean up code / make more efficient and concise
-update README
+themed chart colors
 
 BONUS:
 utilzie classes with private properties
@@ -9,4 +9,3 @@ add song recommendations feature
 STRETCH:
 unit tests with jest
 handle fetch request errors gracefully
-click on track and playback 30 sec feature
