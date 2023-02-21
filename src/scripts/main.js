@@ -2,7 +2,8 @@ import { getTopTracks,
         getRecommendations, 
         getTopArtists,
         getTopTracksAudioFeatures,
-        getTrackAudioFeatures} from "./getters.js";
+        getTrackAudioFeatures,
+        getUser} from "./getters.js";
 
 
 async function getTopTracksData(){
@@ -83,6 +84,8 @@ async function getTopTracksAudioFeaturesData(){
   document.getElementById('loudness').innerText = avgLoudness;
   document.getElementById('liveness').innerText = avgLiveness;
 
+  document.getElementById('audio-stats-title').innerText = 'Average Stats'
+
 }
 
 async function getGenres(){
@@ -129,11 +132,23 @@ async function getGenres(){
               data: Object.values(sorted),
               backgroundColor: chartBackgrounds,
               borderRadius: 10,
-              barThickness: 30,
+              barThickness: 20,
             }
           ]
         },
         options: {
+          scales: {
+            x: {
+              grid: {
+                display: false
+              }
+            },
+            y: {
+              grid: {
+                display: false
+              }
+            }
+          },
           plugins: {
             legend: {
               display: false
@@ -147,16 +162,34 @@ async function getGenres(){
 
 }
 
+async function getUserData(){
+  const userData = await getUser();
+
+  document.getElementById('user-img').src = userData.images[0].url
+
+  document.getElementById('user-name').innerText = userData.display_name
+
+  document.getElementById('user-email').innerText = userData.email
+
+}
+
 let imgArray = document.querySelectorAll('img')
 
 async function handleTrackClick (event) {
+  imgArray.forEach(item => {
+    if(item.id !== event.target.id && item.id !== 'user-img'){
+      item.parentElement.className = 'hover-zoomin'
+    }
+  })
   if(document.getElementById(event.target.id).parentElement.className === 'sticky-hover'){
     document.getElementById(event.target.id).parentElement.className = 'normal-img'
-  } else {
-    document.getElementById(event.target.id).parentElement.className = 'sticky-hover'
+    getTopTracksAudioFeaturesData()
+  } else if(event.target.id !== 'user-img' ) {
+  document.getElementById(event.target.id).parentElement.className = 'sticky-hover'
   }  
 
   //if no tracks are selected anymore, render avg stats again
+
 
   let imgID = sessionStorage.getItem(event.target.id);
 
@@ -173,15 +206,15 @@ async function handleTrackClick (event) {
     
   }
 
-  let itemDanceability = audioFeats.danceability;
+  let itemDanceability = Math.round(audioFeats.danceability*100)/100;
   let itemDuration = audioFeats.duration_ms
-  let itemEnergy = audioFeats.energy
-  let itemInstrumentalness = audioFeats.instrumentalness
-  let itemSpeechiness = audioFeats.speechiness
-  let itemTempo = audioFeats.tempo
-  let itemValence = audioFeats.valence
-  let itemLoudness = audioFeats.loudness
-  let itemLiveness = audioFeats.liveness
+  let itemEnergy = Math.round(audioFeats.energy*100)/100;
+  let itemInstrumentalness = Math.round(audioFeats.instrumentalness*100)/100;
+  let itemSpeechiness = Math.round(audioFeats.speechiness*100)/100;
+  let itemTempo = Math.round(audioFeats.tempo*100)/100;
+  let itemValence = Math.round(audioFeats.valence*100)/100;
+  let itemLoudness = Math.round(audioFeats.loudness*100)/100;
+  let itemLiveness = Math.round(audioFeats.liveness*100)/100;
 
   document.getElementById('dance').innerText = itemDanceability;
   document.getElementById('duration').innerText = convertTime(itemDuration);
@@ -193,6 +226,8 @@ async function handleTrackClick (event) {
   document.getElementById('loudness').innerText = itemLoudness;
   document.getElementById('liveness').innerText = itemLiveness;
 
+  document.getElementById('audio-stats-title').innerText = event.target.parentElement.nextElementSibling.innerText
+
 }
 
 function handleMouseOut (event) {
@@ -200,8 +235,6 @@ function handleMouseOut (event) {
     document.getElementById(event.target.id).parentElement.className = 'hover-zoomin'
   } 
 }
-
-
 
 imgArray.forEach(element => element.addEventListener("click",function(event){
   handleTrackClick(event)
@@ -212,11 +245,10 @@ imgArray.forEach(element => element.addEventListener("mouseout",function(event){
 }))
 
 
-
-
 getTopTracksData();
 getTopTracksAudioFeaturesData();
-getGenres()
+getGenres();
+getUserData();
 
 
 

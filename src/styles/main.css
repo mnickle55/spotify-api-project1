@@ -8,6 +8,10 @@
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(45deg, rgb(133, 255, 189) 0%, rgb(255, 251, 125) 100%)
   }
+
+.black-gradient {
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+}  
  
 
   .hover-zoomin img {
@@ -34,6 +38,9 @@
     -o-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
+    border-color: rgb(236, 152, 236);
+    border-width: 2px;
+    border-radius: 50%;
   }
 
   .normal-img img {
@@ -43,3 +50,21 @@
     -ms-transform: scale(1.0);
     transform: scale(1.0);
   }
+
+  #audio-stats-title{
+    color: rgb(209, 25, 145);
+  }
+
+  hr{
+    height: 1px;
+    background-color: #ccc;
+    border: none;
+  }
+
+  #user-img {
+    height: 100px;
+  }
+
+  
+
+

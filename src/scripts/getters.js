@@ -1,11 +1,11 @@
-//import fetch from 'node-fetch'
-
 //get recommendations based on some of the audio feature stats / need to build query out to specify properties
 //https://api.spotify.com/v1/recommendations
 
+//import { access_token } from "../auth_code/auth.js";
+
 let topTracksIDs = [];
 
-let authToken = 'BQDELKuHIhnIoqhFwErjS6OFXl6ZRY41PeLFnDgGQabB8Mjf_b6XMBBEx6M5_Rm6SGz7P9-8X4esOHuX9dNtL_Slk3QFZFcSGaBfg9SuRdE2z6M6Qkd9ysNyBx8VdegVZS0c79YsJN4Tmh5-SI7pxDVKWDAPWkh99GdjrarI2qteprRB0Z70SU6A4MbE5WLG2XXSu7t5-1n66m9Bzr9peofJTkuw1no'
+let authToken = 'BQCjvTM3xOegapE03vh-47TK2cU3CuC1Zrm4CltZj0shT2K3B4K7cDZKMWvPjuhMcwx95u6O_WX50xDPQdox1UYmQonsld_pdmVMVTF-FQ6TLrqAWlq_habdNe8XItaEkobyEF7R56Xq6lspXz8ZCfT3g2ajHNMF-PGo_bKd1o4rcZNYL5l-6cE3Va1bjqWFAEejk26kMkfNVcX4RNr_I6IEIAEDgGs'
 
 const options = {
   method: 'GET', headers: {
@@ -55,11 +55,12 @@ export const getTrackAudioFeatures = id => fetch(`https://api.spotify.com/v1/aud
       .then(data => data.audio_features[0])
       .catch(err => console.log(err))
 
+export const getUser = () =>
+fetch('https://api.spotify.com/v1/me',options)
+      .then(response => response.json())
+      .then(data => data)
+      .catch(err => console.log(err))
 
-
-  
-
-   
 
 
 
