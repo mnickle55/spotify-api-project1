@@ -8,54 +8,129 @@
     <link rel="stylesheet" href="styles/main.css">
 
   </head>
-  <body>
+  <body class="gradient-custom">
     <div class="container text-center my-2 py-2">
       <div class="row">
-        <div class="col-5">
-          <div class="row p-3 my-2 mx-2">
-            <div class="col mx-2">Top Tracks</div>
+        <div class="col-6">
+          <div class="row p-1 my-2 mx-2">
+            <div class="col mx-2">
+              <div class="h2">Top Tracks</div>
+            </div>
           </div>
-          <div class="row p-3 my-2 mx-2">
-            <div id="Track1" class="col mx-2"></div>
-            <div id="Track2" class="col mx-2"></div>
+
+          <div class="row p-1 my-2 mx-2 justify-content-center">
+            <div class="col mx-2">
+              <div class="hover-zoomin">
+                <img src="..." id="img1" class="img-thumbnail" alt=" ">
+              </div>
+                <h6 id="Track1" class="card-title py-2"></h6>
+            </div>
+            <div class="col mx-2">
+              <div class="hover-zoomin">
+                <img src="..." id="img2" class="img-thumbnail" alt=" ">
+              </div>
+              <h6 id="Track2" class="card-title py-2"></h6>
+            </div>
+            <div class="col mx-2">
+              <div class="hover-zoomin">
+                <img src="..." id="img3" class="img-thumbnail" alt=" ">
+              </div>
+              <h6 id="Track3" class="card-title py-2"></h6>
+            </div>
+          </div>  
+
+          <div class="row p-1 my-2 mx-2 justify-content-center">
+            <div class="col mx-2">
+              <div class="hover-zoomin">
+                <img src="..." id="img4" class="img-thumbnail" alt=" ">
+              </div>
+              <h6 id="Track4" class="card-title py-2"></h6>
+            </div>  
+            <div class="col mx-2">
+              <div class="hover-zoomin">
+                <img src="..." id="img5" class="img-thumbnail" alt=" ">
+              </div>
+              <h6 id="Track5" class="card-title py-2"></h6>
+            </div>
+            <div class="col mx-2">
+              <div class="hover-zoomin">
+                <img src="..." id="img6" class="img-thumbnail" alt=" ">
+              </div>
+              <h6 id="Track6" class="card-title py-2"></h6>
+            </div>
           </div>
-          <div class="row p-3 my-2 mx-2">
-            <div id="Track3" class="col mx-2"></div>
-            <div id="Track4" class="col mx-2"></div>
+
+          <div class="row p-1 my-2 mx-2 justify-content-center">
+            <div class="col mx-2">
+              <div class="hover-zoomin">
+                <img src="..." id="img7" class="img-thumbnail" alt=" ">
+              </div>
+              <h6 id="Track7" class="card-title py-2"></h6>
+            </div>
+            <div class="col mx-2">
+              <div class="hover-zoomin">
+                <img src="..." id="img8" class="img-thumbnail" alt=" ">
+              </div>
+              <h6 id="Track8" class="card-title py-2"></h6>
+            </div> 
+            <div class="col mx-2 ">
+              <div class="hover-zoomin">
+                <img src="..." id="img9" class="img-thumbnail" alt=" ">
+              </div>
+              <h6 id="Track9" class="card-title py-2"></h6>
+            </div>
           </div>
-          <div class="row p-3 my-2 mx-2">
-            <div id="Track5" class="col mx-2"></div>
-            <div id="Track6" class="col mx-2"></div>
-          </div>
-          <div class="row p-3 my-2 mx-2">
-            <div id="Track7" class="col mx-2"></div>
-            <div id="Track8" class="col mx-2"></div>
-          </div>
-          <div class="row p-3 my-2 mx-2">
-            <div id="Track9" class="col mx-2"></div>
-            <div id="Track10" class="col mx-2"></div>
+
+          <div class="row p-1 my-2 mx-2 justify-content-center">
+            <div class="col mx-2">
+              <div class="hover-zoomin">
+                <img src="..." id="img10" class="img-thumbnail" alt=" ">
+              </div>
+              <h6 id="Track10" class="card-title py-2"></h6>
+            </div>
+            <div class="col mx-2">
+              <div class="hover-zoomin">
+                <img src="..." id="img11" class="img-thumbnail" alt=" ">
+              </div>
+              <h6 id="Track11" class="card-title py-2"></h6>
+            </div>
+            <div class="col mx-2">
+              <div class="hover-zoomin">
+                <img src="..." id="img12" class="img-thumbnail" alt=" ">
+              </div>
+              <h6 id="Track12" class="card-title py-2"></h6>
+            </div>   
           </div>
         </div>
-        <div class="col-1"></div>
+  
         <div class="col-6" >
-          <div class="row p-1 my-1 mx-2">
-            <div class="col">Audio Feature Stats</div>
+          <div class="row p-1 my-2 mx-2">
+            <div class="col mx-2">
+              <div class="h2">Top Tracks Audio Features</div>
+            </div>
           </div>
-          <ul class="list-group text-start mx-2">
-            <li class="list-group-item">Danceability: <span id="dance"></span></li>
-            <li class="list-group-item">Duration: <span id="duration"></span></li>
-            <li class="list-group-item">Energy: <span id="energy"></span></li>
-            <li class="list-group-item">Instrumentalness: <span id="instrument"></span></li>
-            <li class="list-group-item">Speechiness: <span id="speech"></span></li>
-            <li class="list-group-item">Tempo (BPM): <span id="tempo"></span></li>
-            <li class="list-group-item">Valence: <span id="valence"></span></li>
-          </ul>
-        </div>
-        <div class="col">
-          <div class="row p-1 my-1 mx-2">Genre Stats</div>
-          <div class="row p-1 my-1 mx-2">
-            <div class="col"><canvas id="myChart"></canvas></div>
-          </div>
+            <ul class="list-group text-start mx-2 my-2 p-1">
+              <li class="list-group-item">Danceability: <span id="dance"></span></li>
+              <li class="list-group-item">Duration: <span id="duration"></span></li>
+              <li class="list-group-item">Energy: <span id="energy"></span></li>
+              <li class="list-group-item">Instrumentalness: <span id="instrument"></span></li>
+              <li class="list-group-item">Speechiness: <span id="speech"></span></li>
+              <li class="list-group-item">Tempo: <span id="tempo"></span><span> BPM</span></li>
+              <li class="list-group-item">Valence: <span id="valence"></span></li>
+              <li class="list-group-item">Loudness: <span id="loudness"></span><span> dB</span>
+              <li class="list-group-item">Liveness: <span id="liveness"></span></li>
+            </ul>
+            <br><br>
+            <div class="col genre-stats-wrapper">
+              <div class="row p-1 my-1 mx-2">
+                <div class="h2">Top Genres</div>
+              </div>
+              <div class="row p-1 my-1 mx-2">
+                <div class="col chart-container" style="position:relative; height:40vh; width:80vw">
+                  <canvas id="myChart"></canvas>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>
@@ -66,5 +141,6 @@
 
     <script src="./scripts/main.js" type="module"></script>
 
+    
   </body>
 </html>

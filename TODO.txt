@@ -1,0 +1,2 @@
+render avg stats again once no more tracks selected
+only allow one image to be clicked at one time_range

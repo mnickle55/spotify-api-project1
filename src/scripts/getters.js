@@ -5,7 +5,7 @@
 
 let topTracksIDs = [];
 
-let authToken = 'BQDuCkJemfNOas3OGUyJCnH6xpY9YqHU54Dw0BcpMZH4hN61evlBkYDKv_vvIKhbQdOc25MX2gpTLbGPHPGa9C3bl5KMvvAs4X9lgjB8VJ1r539sn63dhue5AoJQ4P0i9y17aWB7B0JPxfgby0bbMuvluPOgcGGmmdNOIamI31gLCfdu-oDZQ5sA1La8jo6t3NOlw76SiCfp84peARuyot9RKqghfP0'
+let authToken = 'BQDELKuHIhnIoqhFwErjS6OFXl6ZRY41PeLFnDgGQabB8Mjf_b6XMBBEx6M5_Rm6SGz7P9-8X4esOHuX9dNtL_Slk3QFZFcSGaBfg9SuRdE2z6M6Qkd9ysNyBx8VdegVZS0c79YsJN4Tmh5-SI7pxDVKWDAPWkh99GdjrarI2qteprRB0Z70SU6A4MbE5WLG2XXSu7t5-1n66m9Bzr9peofJTkuw1no'
 
 const options = {
   method: 'GET', headers: {
@@ -15,7 +15,7 @@ const options = {
   }
 }
 
-export const getTopTracks = () => fetch('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=0',options)
+export const getTopTracks = () => fetch('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=12&offset=0',options)
   .then(response => response.json())
   .then(data => data.items)
   .catch(err => console.log(err))
@@ -48,6 +48,15 @@ export const getRecommendations = (artistIDs,genres,trackIDs) => fetch(`https://
       .then(response => response.json())
       .then(data => console.log(data.tracks))
       .catch(err => console.log(err))
+
+
+export const getTrackAudioFeatures = id => fetch(`https://api.spotify.com/v1/audio-features?ids=${id}`,options)
+      .then(response => response.json())
+      .then(data => data.audio_features[0])
+      .catch(err => console.log(err))
+
+
+
   
 
    
