@@ -54,7 +54,6 @@ async function getTopTracksData(){
   document.getElementById('img12').src = topTracks[11].album.images[1].url
 
   audioObjs = topTracks.map(track => new Audio(track.preview_url))
-
 }
 
 async function getTopArtistsAndStore(){
@@ -264,12 +263,8 @@ async function handleTrackClick (event) {
   audioObjs[Number(event.target.id.slice(3))-1].play();
   document.getElementById('chart-title').innerText = 'Song Genres'
   
-    
-
   }  
-  if(document.getElementById(event.target.id).parentElement.className === 'hover-zoomin'){
-    
-  }
+ 
 
 
   //if no tracks are selected anymore, render avg stats again

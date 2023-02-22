@@ -1,6 +1,6 @@
 let topTracksIDs = [];
 
-let authToken = 'BQCYdhh8OBW-V5LBP31zDHBEZ9kbyxo0C6X3O9C_qzPMdmgwq78hTapyQ4VOCgDRnAHyzjkh2YqVvhLINNj9DCnFfwwE3hA1ibBc914PCGTRbsu5uBbPwIAjdNnHxoABb8jLfUM4C4UeghjW06fA3iD8l26ZrmxWcPlFFf536qKasKN9Apt5Wb4eaPo7rnr1R7ZWqcmpygzGSbttchcLAvwkp5Lzsy4'
+let authToken = 'BQDFrXlxExUIeBr-72ELnR0BFXl-cOWc7pv0XbacNVbHWLfVFTLqlDAQJmiJgX9_-CAGGGwis-DOqdIOiJG2v3buqPKucvNjS26dVPxJgrY2_gWE0rKxaaqVrsc2JbAr-yZwlHQrDvP-SN9sle8eNfAw-wHLUVJWsbSQgJEdu2nnjzL6b2xiYA_FqnzrtkizMHFEJtb6rD-7LqLulwsm5YZtUilum1o'
 
 const options = {
   method: 'GET', 
@@ -37,13 +37,10 @@ export const getTopArtists = () => fetch('https://api.spotify.com/v1/me/top/arti
     .then(data => data.items)
     .catch(err => console.log(err))
 
-
-
 export const getRecommendations = (artistIDs,genres,trackIDs) => fetch(`https://api.spotify.com/v1/recommendations?limit=5&market=ES&seed_artists=${artistIDs}&seed_genres=${genres}&seed_tracks=${trackIDs}`,options)
       .then(response => response.json())
       .then(data => data.tracks)
       .catch(err => console.log(err))
-
 
 export const getTrackAudioFeatures = id => fetch(`https://api.spotify.com/v1/audio-features?ids=${id}`,options)
       .then(response => response.json())
