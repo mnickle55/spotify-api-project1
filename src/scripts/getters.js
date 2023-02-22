@@ -1,11 +1,6 @@
-//get recommendations based on some of the audio feature stats / need to build query out to specify properties
-//https://api.spotify.com/v1/recommendations
-
-//import { access_token } from "../auth_code/auth.js";
-
 let topTracksIDs = [];
 
-let authToken = 'BQDV3kYGVEbEb5wJ6fz0WXHQLeKzpMr9t4NcSH7MRSFW76UoeZ0iyL1NqkLndKOq1kAposUaMXp_VcyTXedvLggu9W5PtYWUJoBvuct6pjupW_4gVYJ0vUez0opxMs53-4zHCDk76G0HACd2QdaMt9-7QIxiVYJfm5gGL2W-gbKroKDBrz4k9cJtBjDiHBcW-K3Vwnvnw_5ow4d9O3k0jw-_WhdHnPw'
+let authToken = 'BQAqt0sEke5yo9eZgPq8yGajsF9wdNLWqD4G6W1kOkC-27Vk-99VXlTygk7T0V_22bFM4zRWYvsp37vhoPKt1-DGaJ-4AEmyCbxfrmvEbd444SMiehAdwcPztnVpP0gre3-DUwWgh1OeOhu-Sv2BM_iDJQ64e6JE66tkZKTz1e7OrWF2NI9ngikq5lIEJTwoKW94K3_1-G5zddh2oS-sSUyKBskdnHk'
 
 const options = {
   method: 'GET', 
@@ -46,7 +41,7 @@ export const getTopArtists = () => fetch('https://api.spotify.com/v1/me/top/arti
 
 export const getRecommendations = (artistIDs,genres,trackIDs) => fetch(`https://api.spotify.com/v1/recommendations?limit=5&market=ES&seed_artists=${artistIDs}&seed_genres=${genres}&seed_tracks=${trackIDs}`,options)
       .then(response => response.json())
-      .then(data => console.log(data.tracks))
+      .then(data => data.tracks)
       .catch(err => console.log(err))
 
 
@@ -82,8 +77,3 @@ fetch(`https://api.spotify.com/v1/tracks/${id}`,options)
       })
       .then(response => response.json())
       .then(data => data.genres)
-
-
-
-
-

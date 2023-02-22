@@ -1,5 +1,4 @@
 clean up code / make more efficient and concise
-themed chart colors
 
 BONUS:
 utilzie classes with private properties

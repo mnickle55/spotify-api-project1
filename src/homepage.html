@@ -6,168 +6,192 @@
     <title>Spotify Stats</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/main.css">
-
-
   </head>
+
   <body class="black-gradient">
-  <div class="container text-center my-2 py-2">
-    
-      <div class="row p-1 my-2 mx-5">
-        <div class="col-10 justify-content-center">
-          <div class="card mb-3" style="max-width: 450px;">
-            <div class="row">
-              <div class="col-md-4">
-                <img id= 'user-img' src="..." class="img-thumbnail" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body justify-content-start">
-                  <h5 id ='user-name' class="card-title"></h5>
-                  <p id='user-email' class="card-text"></p>
-                </div>
-              </div>
-            </div>
+  <div class="container text-center my-1 py-1">
+    <header>
+      <div class="row p-1 my-2 mx-2">
+        <div class="col-3">
+          <img id= 'user-img' src="..." class="img-thumbnail mx-2 my-2 p-1" alt="...">
+        </div>
+        <div class="col-6">
+          <div class="my-2 p-1">
+            <div class="p text-start">User ID: <span id="user-id"></span></div>
+            <div class="p text-start">User Name: <span id="user-name"></span></div>
+            <div class="p text-start">Email: <span id="user-email"></span></div>
+            <div class="p text-start">Link: <a id='link' href=""><span id="user-url"></span></a></div>
           </div>
         </div>
-        <!-- <div class="col-2">
-          <div id="loader" class="spinner-grow text-light" role="status">
-          </div>
-        </div> -->
       </div>
+    </header>
 
+    <main>
       <div class="row">
         <div class="col-6">
-          <div class="row p-1 my-2 mx-2">
-            <div class="col mx-2">
-              <div class="h2 text-white">Top Tracks</div>
-              <hr>
+          <section>
+            <div class="row p-1 my-2 mx-2">
+              <div class="col mx-2">
+                <div class="h2 text-white">Top Tracks</div>
+                <hr>
+              </div>
             </div>
-          </div>
-
-          <div class="row p-1 my-2 mx-2 justify-content-evenly">
-            <div class="col-lg-3 col-md-5 my-2 mx-2">
-              <div class="hover-zoomin">
-                <img src="..." id="img1" class="img-thumbnail" alt=" ">
+            <div class="row p-1 my-2 mx-2 justify-content-evenly">
+              <div class="col-lg-3 col-md-5 my-2 mx-2">
+                <div class="hover-zoomin">
+                  <img src="..." id="img1" class="img-thumbnail" alt=" ">
+                </div>
+                  <h6 id="Track1" class="card-title text-white py-2"></h6>
               </div>
-                <h6 id="Track1" class="card-title text-white py-2"></h6>
+              <div class="col-lg-3 col-md-5 my-2 mx-2">
+                <div class="hover-zoomin">
+                  <img src="..." id="img2" class="img-thumbnail" alt=" ">
+                </div>
+                <h6 id="Track2" class="card-title text-white py-2"></h6>
+              </div>
+              <div class="col-lg-3 col-md-5 my-2 mx-2">
+                <div class="hover-zoomin">
+                  <img src="..." id="img3" class="img-thumbnail" alt=" ">
+                </div>
+                <h6 id="Track3" class="card-title text-white py-2"></h6>
+              </div>
+              <div class="col-lg-3 col-md-5 my-2 mx-2">
+                <div class="hover-zoomin">
+                  <img src="..." id="img4" class="img-thumbnail" alt=" ">
+                </div>
+                <h6 id="Track4" class="card-title text-white py-2"></h6>
+              </div>  
+              <div class="col-lg-3 col-md-5 my-2 mx-2">
+                <div class="hover-zoomin">
+                  <img src="..." id="img5" class="img-thumbnail" alt=" ">
+                </div>
+                <h6 id="Track5" class="card-title text-white py-2"></h6>
+              </div>
+              <div class="col-lg-3 col-md-5 my-2 mx-2">
+                <div class="hover-zoomin">
+                  <img src="..." id="img6" class="img-thumbnail" alt=" ">
+                </div>
+                <h6 id="Track6" class="card-title text-white py-2"></h6>
+              </div>
+              <div class="col-lg-3 col-md-5 my-2 mx-2">
+                <div class="hover-zoomin">
+                  <img src="..." id="img7" class="img-thumbnail" alt=" ">
+                </div>
+                <h6 id="Track7" class="card-title text-white py-2"></h6>
+              </div>
+              <div class="col-lg-3 col-md-5 my-2 mx-2">
+                <div class="hover-zoomin">
+                  <img src="..." id="img8" class="img-thumbnail" alt=" ">
+                </div>
+                <h6 id="Track8" class="card-title text-white py-2"></h6>
+              </div> 
+              <div class="col-lg-3 col-md-5 my-2 mx-2 ">
+                <div class="hover-zoomin">
+                  <img src="..." id="img9" class="img-thumbnail" alt=" ">
+                </div>
+                <h6 id="Track9" class="card-title text-white py-2"></h6>
+              </div>
+              <div class="col-lg-3 col-md-5 my-2 mx-2">
+                <div class="hover-zoomin">
+                  <img src="..." id="img10" class="img-thumbnail" alt=" ">
+                </div>
+                <h6 id="Track10" class="card-title text-white py-2"></h6>
+              </div>
+              <div class="col-lg-3 col-md-5 my-2 mx-2">
+                <div class="hover-zoomin">
+                  <img src="..." id="img11" class="img-thumbnail" alt=" ">
+                </div>
+                <h6 id="Track11" class="card-title text-white py-2"></h6>
+              </div>
+              <div class="col-lg-3 col-md-5 my-2 mx-2">
+                <div class="hover-zoomin">
+                  <img src="..." id="img12" class="img-thumbnail" alt=" ">
+                </div>
+                <h6 id="Track12" class="card-title text-white py-2"></h6>
+              </div>   
             </div>
-            <div class="col-lg-3 col-md-5 my-2 mx-2">
-              <div class="hover-zoomin">
-                <img src="..." id="img2" class="img-thumbnail" alt=" ">
-              </div>
-              <h6 id="Track2" class="card-title text-white py-2"></h6>
-            </div>
-            <div class="col-lg-3 col-md-5 my-2 mx-2">
-              <div class="hover-zoomin">
-                <img src="..." id="img3" class="img-thumbnail" alt=" ">
-              </div>
-              <h6 id="Track3" class="card-title text-white py-2"></h6>
-            </div>
-            <div class="col-lg-3 col-md-5 my-2 mx-2">
-              <div class="hover-zoomin">
-                <img src="..." id="img4" class="img-thumbnail" alt=" ">
-              </div>
-              <h6 id="Track4" class="card-title text-white py-2"></h6>
-            </div>  
-            <div class="col-lg-3 col-md-5 my-2 mx-2">
-              <div class="hover-zoomin">
-                <img src="..." id="img5" class="img-thumbnail" alt=" ">
-              </div>
-              <h6 id="Track5" class="card-title text-white py-2"></h6>
-            </div>
-            <div class="col-lg-3 col-md-5 my-2 mx-2">
-              <div class="hover-zoomin">
-                <img src="..." id="img6" class="img-thumbnail" alt=" ">
-              </div>
-              <h6 id="Track6" class="card-title text-white py-2"></h6>
-            </div>
-            <div class="col-lg-3 col-md-5 my-2 mx-2">
-              <div class="hover-zoomin">
-                <img src="..." id="img7" class="img-thumbnail" alt=" ">
-              </div>
-              <h6 id="Track7" class="card-title text-white py-2"></h6>
-            </div>
-            <div class="col-lg-3 col-md-5 my-2 mx-2">
-              <div class="hover-zoomin">
-                <img src="..." id="img8" class="img-thumbnail" alt=" ">
-              </div>
-              <h6 id="Track8" class="card-title text-white py-2"></h6>
-            </div> 
-            <div class="col-lg-3 col-md-5 my-2 mx-2 ">
-              <div class="hover-zoomin">
-                <img src="..." id="img9" class="img-thumbnail" alt=" ">
-              </div>
-              <h6 id="Track9" class="card-title text-white py-2"></h6>
-            </div>
-            <div class="col-lg-3 col-md-5 my-2 mx-2">
-              <div class="hover-zoomin">
-                <img src="..." id="img10" class="img-thumbnail" alt=" ">
-              </div>
-              <h6 id="Track10" class="card-title text-white py-2"></h6>
-            </div>
-            <div class="col-lg-3 col-md-5 my-2 mx-2">
-              <div class="hover-zoomin">
-                <img src="..." id="img11" class="img-thumbnail" alt=" ">
-              </div>
-              <h6 id="Track11" class="card-title text-white py-2"></h6>
-            </div>
-            <div class="col-lg-3 col-md-5 my-2 mx-2">
-              <div class="hover-zoomin">
-                <img src="..." id="img12" class="img-thumbnail" alt=" ">
-              </div>
-              <h6 id="Track12" class="card-title text-white py-2"></h6>
-            </div>   
-          </div>
-          <div class="row">
-            <div class="col">
-              <div id='tip'class="p text-white"></div>
-            </div>
-          </div>
+          </section>
         </div>
-  
         <div class="col-6" >
           <div class="row p-1 my-2 mx-2">
             <div class="col mx-2">
-              <div class="h2 text-white">Audio Features</div>
-              <hr>
-            </div>
-          </div>
-            <ul class="list-group text-start mx-2 my-2 p-1">
-              <li class="list-group-item">
-                <div id= "audio-stats-title" class="h4"></div>
-              </li>
-              <li class="list-group-item"> Danceability: <span id="dance"></span></li>
-              <li class="list-group-item">Duration: <span id="duration"></span></li>
-              <li class="list-group-item">Energy: <span id="energy"></span></li>
-              <li class="list-group-item">Instrumentalness: <span id="instrument"></span></li>
-              <li class="list-group-item">Speechiness: <span id="speech"></span></li>
-              <li class="list-group-item">Tempo: <span id="tempo"></span><span> BPM</span></li>
-              <li class="list-group-item">Valence: <span id="valence"></span></li>
-              <li class="list-group-item">Loudness: <span id="loudness"></span><span> dB</span>
-              <li class="list-group-item">Liveness: <span id="liveness"></span></li>
-            </ul>
-            <br><br>
-            <div class="col genre-stats-wrapper">
-              <div class="row p-1 my-1 mx-2">
-                <div id='chart-title' class="h2 text-white">Top Genres</div>
+              <section>
+                <div class="h2 text-white">Audio Features</div>
                 <hr>
               </div>
-              <div class="row p-1 my-1 mx-2">
-                <div class="col chart-container justify-content-center" style="position: relative; height:40vh; width:80vw">
-                  <canvas id="myChart" ></canvas>
+            </div>
+              <ul class="list-group text-start mx-2 my-2 p-1">
+                <li class="list-group-item">
+                  <div id= "audio-stats-title" class="h4"></div>
+                </li>
+                <li class="list-group-item"> Danceability: <span id="dance"></span></li>
+                <li class="list-group-item">Duration: <span id="duration"></span></li>
+                <li class="list-group-item">Energy: <span id="energy"></span></li>
+                <li class="list-group-item">Instrumentalness: <span id="instrument"></span></li>
+                <li class="list-group-item">Speechiness: <span id="speech"></span></li>
+                <li class="list-group-item">Tempo: <span id="tempo"></span><span> BPM</span></li>
+                <li class="list-group-item">Valence: <span id="valence"></span></li>
+                <li class="list-group-item">Loudness: <span id="loudness"></span><span> dB</span>
+                <li class="list-group-item">Liveness: <span id="liveness"></span></li>
+              </ul>
+              </section>
+            <br>
+            <section>
+              <div class="col genre-stats-wrapper">
+                <div class="row p-1 my-1 mx-2">
+                  <div id='chart-title' class="h2 text-white">Top Genres</div>
+                  <hr>
+                </div>
+                <div class="row p-1 my-1 mx-2">
+                  <div class="col chart-container justify-content-center" style="position: relative; height:40vh; width:80vw">
+                    <canvas id="myChart" ></canvas>
+                  </div>
                 </div>
               </div>
-            </div>
-            
+            </section>
         </div>
       </div>
-    </div>
-
+    </main>
+    <hr>
+    <section>
+      <div class="row p-1 my-2 mx-2 justify-content-evenly">
+        <div id='rec-title' class="h2 text-white">Top Recommendations</div>
+        <br><br>
+        <div class="col my-2 mx-2">
+          <div class="hover-zoomin">
+            <img src="..." id="img13" class="img-thumbnail" alt=" ">
+          </div>
+          <h6 id="RecTrack1" class="card-title text-white py-2"></h6>
+        </div>
+        <div class="col my-2 mx-2">
+          <div class="hover-zoomin">
+            <img src="..." id="img14" class="img-thumbnail" alt=" ">
+          </div>
+          <h6 id="RecTrack2" class="card-title text-white py-2"></h6>
+        </div>
+        <div class="col my-2 mx-2">
+          <div class="hover-zoomin">
+            <img src="..." id="img15" class="img-thumbnail" alt=" ">
+          </div>
+          <h6 id="RecTrack3" class="card-title text-white py-2"></h6>
+        </div>
+        <div class="col my-2 mx-2">
+          <div class="hover-zoomin">
+            <img src="..." id="img16" class="img-thumbnail" alt=" ">
+          </div>
+          <h6 id="RecTrack4" class="card-title text-white py-2"></h6>
+        </div>
+        <div class="col my-2 mx-2">
+          <div class="hover-zoomin">
+            <img src="..." id="img17" class="img-thumbnail" alt=" ">
+          </div>
+          <h6 id="RecTrack5" class="card-title text-white py-2"></h6>
+        </div>
+      </div>
+    </section>
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
     <script src="./scripts/main.js" type="module"></script>
-    <script src="./scripts/getters.js" type="module"></script>
-    
   </body>
 </html>
