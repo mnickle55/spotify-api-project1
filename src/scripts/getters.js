@@ -1,6 +1,6 @@
 let topTracksIDs = [];
 
-let authToken = 'BQAqt0sEke5yo9eZgPq8yGajsF9wdNLWqD4G6W1kOkC-27Vk-99VXlTygk7T0V_22bFM4zRWYvsp37vhoPKt1-DGaJ-4AEmyCbxfrmvEbd444SMiehAdwcPztnVpP0gre3-DUwWgh1OeOhu-Sv2BM_iDJQ64e6JE66tkZKTz1e7OrWF2NI9ngikq5lIEJTwoKW94K3_1-G5zddh2oS-sSUyKBskdnHk'
+let authToken = 'BQCYdhh8OBW-V5LBP31zDHBEZ9kbyxo0C6X3O9C_qzPMdmgwq78hTapyQ4VOCgDRnAHyzjkh2YqVvhLINNj9DCnFfwwE3hA1ibBc914PCGTRbsu5uBbPwIAjdNnHxoABb8jLfUM4C4UeghjW06fA3iD8l26ZrmxWcPlFFf536qKasKN9Apt5Wb4eaPo7rnr1R7ZWqcmpygzGSbttchcLAvwkp5Lzsy4'
 
 const options = {
   method: 'GET', 

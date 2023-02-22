@@ -3,7 +3,6 @@ clean up code / make more efficient and concise
 BONUS:
 utilzie classes with private properties
 leading spinner for api calls
-add song recommendations feature
 
 STRETCH:
 unit tests with jest

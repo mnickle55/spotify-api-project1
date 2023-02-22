@@ -4,13 +4,12 @@ import { getTopTracks,
         getTopTracksAudioFeatures,
         getTrackAudioFeatures,
         getUser,
-        getArtist,
-        getSingleTrack,
         getArtistGenresFromTrackID} from "./getters.js";
 
 let audioObjs = []
 var activeChart;
 let sorted;
+let imgArray = document.querySelectorAll('img')
 
 async function getTopTracksData(){
   const topTracks = await getTopTracks();
@@ -71,7 +70,7 @@ async function renderRecommendations(){
   let genres = sessionStorage.getItem('genres')
   let genresArry = genres.split(',')
   let randomGenres;
-  //get string list of random artist ids
+
   for (let i=1;i<=20;i++){
     if(sessionStorage.getItem(`TopArtist${i}`)){
       artists.push(sessionStorage.getItem(`TopArtist${i}`))
@@ -79,8 +78,6 @@ async function renderRecommendations(){
   }
 const shuffledArtists = artists.sort(() => 0.5 - Math.random());
 randomArtists = shuffledArtists.slice(0, 1);
-
-  //get string list of random track ids
 
   for (let i=1;i<=12;i++){
     if(sessionStorage.getItem(`img${i}`)){
@@ -91,14 +88,10 @@ randomArtists = shuffledArtists.slice(0, 1);
   const shuffledTracks = tracks.sort(() => 0.5 - Math.random());
   randomTracks = shuffledTracks.slice(0, 2);
 
-  //get string list of random genres
-
   const shuffledGenres = genresArry.sort(() => 0.5 - Math.random());
   randomGenres = shuffledGenres.slice(0, 2);
 
-
   const recommendations = await getRecommendations(randomArtists.join('%2C'),randomGenres.join('%2C').replaceAll(' ', '%20'),randomTracks.join('%2C'))
-  console.log(recommendations)
 
   document.getElementById('RecTrack1').innerText = recommendations[0].name
   document.getElementById('RecTrack2').innerText = recommendations[1].name
@@ -118,8 +111,6 @@ randomArtists = shuffledArtists.slice(0, 1);
   sessionStorage.setItem('img16',recommendations[3].id)
   sessionStorage.setItem('img17',recommendations[4].id)
 
-
-
   if(audioObjs[12]){
     for (let i=0;i<5;i++){
       audioObjs.splice(12+i,1,new Audio(recommendations[i].preview_url))
@@ -127,10 +118,7 @@ randomArtists = shuffledArtists.slice(0, 1);
   } else {
     recommendations.forEach(track => audioObjs.push(new Audio(track.preview_url)))
   }
-
 }
-
-
 
 async function getTopTracksAudioFeaturesData(){
   const topTracksAudioFeatures = await getTopTracksAudioFeatures();
@@ -143,7 +131,6 @@ async function getTopTracksAudioFeaturesData(){
     const seconds = Math.round(time - minutes * 60)
 
     return `${minutes} minutes ${seconds} seconds`
-    
   }
 
   let avgDanceability = getAvgFeature('danceability');
@@ -155,8 +142,8 @@ async function getTopTracksAudioFeaturesData(){
   let avgValence = getAvgFeature('valence');
   let avgLoudness = getAvgFeature('loudness');
   let avgLiveness = getAvgFeature('liveness');
-
-
+  
+  document.getElementById('audio-stats-title').innerText = 'Top Tracks Average Stats'
   document.getElementById('dance').innerText = avgDanceability;
   document.getElementById('duration').innerText = avgDuration;
   document.getElementById('energy').innerText = avgEnergy;
@@ -166,9 +153,6 @@ async function getTopTracksAudioFeaturesData(){
   document.getElementById('valence').innerText = avgValence;
   document.getElementById('loudness').innerText = avgLoudness;
   document.getElementById('liveness').innerText = avgLiveness;
-
-  document.getElementById('audio-stats-title').innerText = 'Top Tracks Average Stats'
-
 }
 
 async function getGenres(){
@@ -180,7 +164,6 @@ async function getGenres(){
   if(!sessionStorage.getItem('genres')){
     sessionStorage.setItem('genres', genres)
   }
-
 
   for (const item of genres) {
     genreCounts[item] = genreCounts[item] ? genreCounts[item] + 1 : 1;
@@ -242,12 +225,8 @@ async function getGenres(){
         }
       });
   }
-
   RenderChart()
-
 }
-
-
 
 async function getUserData(){
   const userData = await getUser();
@@ -258,10 +237,7 @@ async function getUserData(){
   document.getElementById('user-id').innerText = userData.id
   document.getElementById('user-url').innerText = userData.external_urls.spotify
   document.getElementById('link').href = userData.external_urls.spotify
-
 }
-
-let imgArray = document.querySelectorAll('img')
 
 async function handleTrackClick (event) {
   let skip = false;
@@ -275,7 +251,6 @@ async function handleTrackClick (event) {
     document.getElementById(event.target.id).parentElement.className = 'normal-img'
     getTopTracksAudioFeaturesData()
 
-    //fix this
     activeChart.data.labels =  Object.keys(sorted)
     activeChart.data.datasets[0].data = Object.values(sorted)
     activeChart.update()
@@ -364,6 +339,28 @@ imgArray.forEach(element => element.addEventListener("click",function(event){
 imgArray.forEach(element => element.addEventListener("mouseout",function(event){
   handleMouseOut(event)
 }))
+
+let refreshBtn = document.getElementById('refresh')
+refreshBtn.addEventListener("click",function(event){
+
+
+  
+  audioObjs.forEach(element => element.pause())
+  imgArray.forEach(item => {
+    if(item.id !== event.target.id && item.id !== 'user-img'){
+      item.parentElement.className = 'hover-zoomin';
+    }
+  })
+  
+  renderRecommendations();
+  activeChart.data.labels =  Object.keys(sorted)
+    activeChart.data.datasets[0].data = Object.values(sorted)
+    activeChart.update()
+    document.getElementById('chart-title').innerText = 'Top Genres'
+
+})
+
+
 
 
 getTopTracksData();

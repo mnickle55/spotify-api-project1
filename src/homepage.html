@@ -120,7 +120,7 @@
                 <hr>
               </div>
             </div>
-              <ul class="list-group text-start mx-2 my-2 p-1">
+              <ul class="list-group text-start mx-2 my-2 py-2 p-1">
                 <li class="list-group-item">
                   <div id= "audio-stats-title" class="h4"></div>
                 </li>
@@ -154,40 +154,46 @@
     </main>
     <hr>
     <section>
-      <div class="row p-1 my-2 mx-2 justify-content-evenly">
-        <div id='rec-title' class="h2 text-white">Top Recommendations</div>
-        <br><br>
-        <div class="col my-2 mx-2">
-          <div class="hover-zoomin">
-            <img src="..." id="img13" class="img-thumbnail" alt=" ">
-          </div>
-          <h6 id="RecTrack1" class="card-title text-white py-2"></h6>
+      <div class="row p-1 my-1 mx-2 justify-content-start">
+        <div class="col-2">
+          <button id='refresh' type="button" class="btn btn-light">Refresh</button>
         </div>
-        <div class="col my-2 mx-2">
-          <div class="hover-zoomin">
-            <img src="..." id="img14" class="img-thumbnail" alt=" ">
-          </div>
-          <h6 id="RecTrack2" class="card-title text-white py-2"></h6>
+        <div class="col-6 text-start">
+          <div id='rec-title' class="h2 text-white">Song Recommendations</div>
         </div>
-        <div class="col my-2 mx-2">
-          <div class="hover-zoomin">
-            <img src="..." id="img15" class="img-thumbnail" alt=" ">
+      </div>  
+        <div class="row">
+          <div class="col my-2 mx-2 py-2">
+            <div class="hover-zoomin">
+              <img src="..." id="img13" class="img-thumbnail" alt=" ">
+            </div>
+            <h6 id="RecTrack1" class="card-title text-white py-4"></h6>
           </div>
-          <h6 id="RecTrack3" class="card-title text-white py-2"></h6>
-        </div>
-        <div class="col my-2 mx-2">
-          <div class="hover-zoomin">
-            <img src="..." id="img16" class="img-thumbnail" alt=" ">
+          <div class="col my-2 mx-2 py-2">
+            <div class="hover-zoomin">
+              <img src="..." id="img14" class="img-thumbnail" alt=" ">
+            </div>
+            <h6 id="RecTrack2" class="card-title text-white py-4"></h6>
           </div>
-          <h6 id="RecTrack4" class="card-title text-white py-2"></h6>
-        </div>
-        <div class="col my-2 mx-2">
-          <div class="hover-zoomin">
-            <img src="..." id="img17" class="img-thumbnail" alt=" ">
+          <div class="col my-2 mx-2 py-2">
+            <div class="hover-zoomin">
+              <img src="..." id="img15" class="img-thumbnail" alt=" ">
+            </div>
+            <h6 id="RecTrack3" class="card-title text-white py-4"></h6>
           </div>
-          <h6 id="RecTrack5" class="card-title text-white py-2"></h6>
+          <div class="col my-2 mx-2 py-2">
+            <div class="hover-zoomin">
+              <img src="..." id="img16" class="img-thumbnail" alt=" ">
+            </div>
+            <h6 id="RecTrack4" class="card-title text-white py-4"></h6>
+          </div>
+          <div class="col my-2 mx-2 py-2">
+            <div class="hover-zoomin">
+              <img src="..." id="img17" class="img-thumbnail" alt=" ">
+            </div>
+            <h6 id="RecTrack5" class="card-title text-white py-4"></h6>
+          </div>
         </div>
-      </div>
     </section>
   </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
