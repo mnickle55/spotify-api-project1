@@ -69,9 +69,14 @@
     height:100px
   }  
 
-  section {
-    border: solid red
-  }
+  .list-group-item {
+    position: relative;
+    display: block;
+    padding: 6px; /* adjust here */
+    margin-bottom: -1px;
+    border: 1px solid #ddd;
+    line-height: 1em /* set to text height */
+}
 
   
 

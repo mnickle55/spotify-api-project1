@@ -4,8 +4,14 @@ import { getTopTracks,
         getTopTracksAudioFeatures,
         getTrackAudioFeatures,
         getUser,
-        getTrackPreview} from "./getters.js";
+        getArtist,
+        getSingleTrack,
+        getArtistGenresFromTrackID} from "./getters.js";
 
+
+let audioObjs = []
+var activeChart;
+let sorted;
 
 async function getTopTracksData(){
   const topTracks = await getTopTracks();
@@ -49,6 +55,15 @@ async function getTopTracksData(){
   document.getElementById('img11').src = topTracks[10].album.images[1].url
   document.getElementById('img12').src = topTracks[11].album.images[1].url
 
+  audioObjs = topTracks.map(track => new Audio(track.preview_url))
+
+}
+
+function playSound(url) {
+  audioObjs.forEach(element => element.pause())
+  var a = new Audio(url);
+  audioObjs.push(a)
+  a.play();
 }
 
 async function getTopTracksAudioFeaturesData(){
@@ -89,15 +104,6 @@ async function getTopTracksAudioFeaturesData(){
 
 }
 
-let audioObjs = []
-
-function playSound(url) {
-  audioObjs.forEach(element => element.pause())
-  var a = new Audio(url);
-  audioObjs.push(a)
-  a.play();
-}
-
 async function getGenres(){
   let genres = [];
   let genreCounts = {};
@@ -109,7 +115,7 @@ async function getGenres(){
     genreCounts[item] = genreCounts[item] ? genreCounts[item] + 1 : 1;
   }
 
-  let sorted = Object.entries(genreCounts)
+  sorted = Object.entries(genreCounts)
     .sort(([,b],[,a]) => a-b)
     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 
@@ -121,17 +127,14 @@ async function getGenres(){
 
   let chartBackgrounds = [];
 
+  let chartThemeColors = ['rgb(209, 25, 145)','rgb(236, 152, 236)','rgb(234, 228, 240)','rgb(157, 197, 232)','rgb(71, 117, 208)','rgb(106, 226, 126)']
+
   for(let i=0;i<10;i++){
-    let rgb =[];
-    for(let j = 0; j < 3; j++){
-      rgb.push(Math.floor(Math.random() * 255));
-    }
-    let backgroundColor = 'rgb('+ rgb.join(',') +')';
-    chartBackgrounds.push(backgroundColor)
+    chartBackgrounds.push(chartThemeColors[Math.floor(Math.random()*chartThemeColors.length)])
   }
 
   async function RenderChart() {
-    new Chart(
+    activeChart = new Chart(
       document.getElementById('myChart'),
       {
         type: 'bar',
@@ -149,6 +152,7 @@ async function getGenres(){
         options: {
           scales: {
             x: {
+              ticks: {color: 'white'},
               grid: {
                 display: false
               }
@@ -172,6 +176,8 @@ async function getGenres(){
 
 }
 
+
+
 async function getUserData(){
   const userData = await getUser();
 
@@ -186,6 +192,7 @@ async function getUserData(){
 let imgArray = document.querySelectorAll('img')
 
 async function handleTrackClick (event) {
+  let skip = false;
   imgArray.forEach(item => {
     if(item.id !== event.target.id && item.id !== 'user-img'){
       item.parentElement.className = 'hover-zoomin';
@@ -195,18 +202,33 @@ async function handleTrackClick (event) {
     audioObjs.forEach(element => element.pause())
     document.getElementById(event.target.id).parentElement.className = 'normal-img'
     getTopTracksAudioFeaturesData()
+
+    //fix this
+    activeChart.data.labels =  Object.keys(sorted)
+    activeChart.data.datasets[0].data = Object.values(sorted)
+    activeChart.update()
+    document.getElementById('chart-title').innerText = 'Top Genres'
+    skip = true;
+
   } else if(event.target.id !== 'user-img' ) {
   document.getElementById(event.target.id).parentElement.className = 'sticky-hover'
-  playSound(
-    await getTrackPreview(sessionStorage.getItem(event.target.id)))
+  audioObjs.forEach(track => track.pause())
+
+  audioObjs[Number(event.target.id.slice(3))-1].play();
+  document.getElementById('chart-title').innerText = 'Song Genres'
+  
+    
+
   }  
+  if(document.getElementById(event.target.id).parentElement.className === 'hover-zoomin'){
+    
+  }
 
 
   //if no tracks are selected anymore, render avg stats again
 
 
   let imgID = sessionStorage.getItem(event.target.id);
-
 
   const audioFeats = await getTrackAudioFeatures(imgID)
 
@@ -241,6 +263,19 @@ async function handleTrackClick (event) {
   document.getElementById('liveness').innerText = itemLiveness;
 
   document.getElementById('audio-stats-title').innerText = event.target.parentElement.nextElementSibling.innerText
+
+  if(skip===false){
+    //fix this
+    let trackGenres = await getArtistGenresFromTrackID(imgID)
+    let vals = trackGenres.map(genre => 1)
+  
+    //use chart.js update method to update data
+    activeChart.data.labels = trackGenres
+    activeChart.data.datasets[0].data = vals
+    activeChart.update()
+
+  }
+
 
 }
 

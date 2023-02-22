@@ -5,7 +5,7 @@
 
 let topTracksIDs = [];
 
-let authToken = 'BQDoTPDggc3kTQTw7p1RX924zR8vGRxdSPVHXxwvG7mjOB1AfoeXGlcfuOckLyBs175gGZbU-41C18hAJNAlTNlWV_sleJsb7qFQF2v1KBQ9FTFOIaSQks7eICTFl02iNDdeGcG8BIP1-VLMVAko93XcGCzVMNNq_dfl60RHhiCqUwL8Tz-P2zqM0I-Q5TiOzdu2YGL7Y4DuwU1Qbe5snTa0YjTYgyw'
+let authToken = 'BQDV3kYGVEbEb5wJ6fz0WXHQLeKzpMr9t4NcSH7MRSFW76UoeZ0iyL1NqkLndKOq1kAposUaMXp_VcyTXedvLggu9W5PtYWUJoBvuct6pjupW_4gVYJ0vUez0opxMs53-4zHCDk76G0HACd2QdaMt9-7QIxiVYJfm5gGL2W-gbKroKDBrz4k9cJtBjDiHBcW-K3Vwnvnw_5ow4d9O3k0jw-_WhdHnPw'
 
 const options = {
   method: 'GET', 
@@ -19,11 +19,6 @@ const options = {
 export const getTopTracks = () => fetch('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=12&offset=0',options)
   .then(response => response.json())
   .then(data => data.items)
-  .catch(err => console.log(err))
-
-export const getTrackPreview = (id) => fetch(`https://api.spotify.com/v1/tracks/${id}`,options)
-  .then(response => response.json())
-  .then(data => data.preview_url)
   .catch(err => console.log(err))
 
 export const getTopTracksAudioFeatures = () => fetch('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=0',options)
@@ -47,8 +42,7 @@ export const getTopArtists = () => fetch('https://api.spotify.com/v1/me/top/arti
     .then(data => data.items)
     .catch(err => console.log(err))
 
-    // "https://api.spotify.com/v1/recommendations?limit=5&market=ES&seed_artists=0u18Cq5stIQLUoIaULzDmA&seed_genres=dance%20pop%2Cedm%2Cpop&seed_tracks=0c6xIDDpzE81m2q797ordA"
-    // docs to see all parameters: https://developer.spotify.com/documentation/web-api/reference/#/operations/get-recommendations
+
 
 export const getRecommendations = (artistIDs,genres,trackIDs) => fetch(`https://api.spotify.com/v1/recommendations?limit=5&market=ES&seed_artists=${artistIDs}&seed_genres=${genres}&seed_tracks=${trackIDs}`,options)
       .then(response => response.json())
@@ -67,13 +61,28 @@ fetch('https://api.spotify.com/v1/me',options)
       .then(data => data)
       .catch(err => console.log(err))
 
+export const getSingleTrack = (id) => 
+fetch(`https://api.spotify.com/v1/tracks/${id}`,options)
+      .then(response => response.json())
+      .then(data => data.album)
+      .catch(err => console.log(err))
 
+export const getArtist = (id) => 
+fetch(`https://api.spotify.com/v1/artists/${id}`,options)
+      .then(response => response.json())
+      .then(data => data)
+      .catch(err => console.log(err))
 
+export const getArtistGenresFromTrackID = (id) => 
+fetch(`https://api.spotify.com/v1/tracks/${id}`,options)
+      .then(response => response.json())
+      .then(data => {
+        const artistID = data.album.artists[0].id
+        return fetch(`https://api.spotify.com/v1/artists/${artistID}`,options)
+      })
+      .then(response => response.json())
+      .then(data => data.genres)
 
-
-  
-
-  
 
 
 

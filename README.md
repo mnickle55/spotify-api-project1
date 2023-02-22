@@ -27,3 +27,5 @@ In order to run this application, navigate to the the auth_code folder, and run 
     $ node app
 
 Then, open `http://localhost:8888` in a browser to begin.
+
+Afting loggin in with your Spotify account, the temporary access token will be console logged to your IDE terminal. Paste this string to the `authToken` variable in the getters.js file. Then refresh the localhost:8888/homepage.html in your browser.
